@@ -127,4 +127,15 @@ public class AppTest extends AppFixture implements MyCategories
 	public void assumeTest(){
 		Assume.assumeThat(2 + 3, is(5));
 	}
+
+	@Test
+	public void test1() {
+		driver.get("http://seleniumhq.org/");
+	}
+
+	@Test
+	@NeedsFreshDriver
+	public void test2() {
+		driver.get("http://selenium2.ru/");
+	}
 }

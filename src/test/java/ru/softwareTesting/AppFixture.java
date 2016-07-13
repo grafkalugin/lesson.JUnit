@@ -3,13 +3,20 @@ package ru.softwareTesting;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.rules.ExternalResource;
-import org.junit.rules.RuleChain;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class AppFixture {
 
+	//protected static WebDriver driver;
+
+	@ClassRule
+	public static WebDriverRule driver = new WebDriverRule(DesiredCapabilities.chrome());
 
 	@Rule
-	public ExternalResource driverRule = new ExternalResource() {
+	public FreshDriverRule freshDriverRule = new FreshDriverRule(driver);
+
+	@Rule
+	public ExternalResource driverRule0 = new ExternalResource() {
 		@Override
 		protected void before() throws Throwable {
 			System.out.println("Start method fixture");
@@ -23,19 +30,6 @@ public class AppFixture {
 
 	};
 
-	@Rule
-	public ExternalResource driverRule0 = new ExternalResource() {
-		@Override
-		protected void before() throws Throwable {
-			System.out.println("Start method fixture2");
-		};
-
-		@Override
-		protected void after() {
-			System.out.println("Stop method fixture2");
-		};
-
-	};
 
 	@ClassRule
 	public static ExternalResource driverRule2 = new ExternalResource() {
@@ -50,7 +44,7 @@ public class AppFixture {
 		};
 	};
 
-	@Rule
-	public RuleChain rules = RuleChain.outerRule(driverRule).around(driverRule0);
+	//@Rule
+	//public RuleChain rules = RuleChain.outerRule(driverRule).around(driverRule0);
 
 }
