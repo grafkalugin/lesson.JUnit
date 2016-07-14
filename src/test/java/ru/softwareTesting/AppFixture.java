@@ -19,7 +19,7 @@ public class AppFixture {
 	//public TestRule runTwiceRule = new RunTwiceRule();
 
 	@Rule
-	public RunSeveralTimesRule runSeveralTimes = new RunSeveralTimesRule(driver);
+	public UnstableRule unstable = new UnstableRule(driver);
 
 	@Rule
 	public ExternalResource driverRule0 = new ExternalResource() {

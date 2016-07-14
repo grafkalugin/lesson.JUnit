@@ -156,8 +156,8 @@ public class AppTest extends AppFixture implements MyCategories
 	private static int attempt2 = 1;
 
 	@Test
-	@RunSeveralTimes(3)
-	public void randomlyFailingTest2() {
+	@Unstable(3)
+	public void unstableTest() {
 		if (attempt2 == 2) {
 			attempt2 = 1;
 

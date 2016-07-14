@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RunSeveralTimes {
+public @interface Unstable {
 	//public int NumberOfRun();
 	public int value(); // удобнее указывать без явного указания имени
 }

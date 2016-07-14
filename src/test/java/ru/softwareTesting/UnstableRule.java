@@ -6,25 +6,25 @@ import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
-public class RunSeveralTimesRule implements TestRule {
+public class UnstableRule implements TestRule {
 
 	private WebDriverRule driverRule;
 
-	public RunSeveralTimesRule(WebDriverRule driverRule) {
+	public UnstableRule(WebDriverRule driverRule) {
 		this.driverRule = driverRule;
 	}
 
 	@Override
 	public Statement apply(Statement base, Description desc) {
-		return new RunSeveralTimesStatement(base, desc);
+		return new UnstableStatement(base, desc);
 	}
 
-	public class RunSeveralTimesStatement extends Statement {
+	public class UnstableStatement extends Statement {
 
 		private final Statement base;
 		private Description desc;
 
-		public RunSeveralTimesStatement(Statement base, Description desc) {
+		public UnstableStatement(Statement base, Description desc) {
 			this.base = base;
 			this.desc = desc;
 		}
@@ -34,7 +34,7 @@ public class RunSeveralTimesRule implements TestRule {
 
 
 
-			RunSeveralTimes sevTimes = desc.getAnnotation(RunSeveralTimes.class);
+			Unstable sevTimes = desc.getAnnotation(Unstable.class);
 			if (sevTimes != null) {
 
 				int numOfSevTimes = sevTimes.value();
