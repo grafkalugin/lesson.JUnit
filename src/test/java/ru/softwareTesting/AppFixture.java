@@ -15,6 +15,12 @@ public class AppFixture {
 	@Rule
 	public FreshDriverRule freshDriverRule = new FreshDriverRule(driver);
 
+	//@Rule
+	//public TestRule runTwiceRule = new RunTwiceRule();
+
+	@Rule
+	public RunSeveralTimesRule runSeveralTimes = new RunSeveralTimesRule(driver);
+
 	@Rule
 	public ExternalResource driverRule0 = new ExternalResource() {
 		@Override

@@ -5,6 +5,7 @@ import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -138,4 +139,31 @@ public class AppTest extends AppFixture implements MyCategories
 	public void test2() {
 		driver.get("http://selenium2.ru/");
 	}
+
+
+	private static int attempt = 1; // randomlyFailingTest
+
+	@Test
+	public void randomlyFailingTest() {
+		if (attempt == 2) {
+			attempt = 1;
+
+		} else {
+			Assert.fail("Failed on " + (attempt++) + " attempt");
+		}
+	}
+
+	private static int attempt2 = 1;
+
+	@Test
+	@RunSeveralTimes(3)
+	public void randomlyFailingTest2() {
+		if (attempt2 == 2) {
+			attempt2 = 1;
+
+		} else {
+			Assert.fail("Failed on " + (attempt2++) + " attempt");
+		}
+	}
+
 }
