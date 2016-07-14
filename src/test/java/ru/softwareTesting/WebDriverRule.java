@@ -36,7 +36,6 @@ public class WebDriverRule extends TestWatcher implements WebDriver, TakesScreen
 		;
 		*/
 
-
 	@Override
 	protected void starting(Description description) {
 		System.out.println("Getting a browser");
